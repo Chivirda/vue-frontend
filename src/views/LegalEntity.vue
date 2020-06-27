@@ -22,6 +22,6 @@
 <script>
 import entities from '@/assets/legalentity.json'
 export default {
-  name: 'LegalEntity',
+  name: 'legalentity',
 }
 </script>

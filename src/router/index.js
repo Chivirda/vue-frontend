@@ -6,7 +6,7 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'legalentity',
     component: () => import('@/views/LegalEntity.vue')
   }
 ]
