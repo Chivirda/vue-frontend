@@ -7,6 +7,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'home',
+    component: () => import('@/views/LegalEntity.vue')
   }
 ]
 

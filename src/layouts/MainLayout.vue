@@ -3,7 +3,7 @@
     <Header />
     <div class="main-wrapper">
       <Navbar />
-        
+        <router-view />
     </div>
   </div>
 </template>
