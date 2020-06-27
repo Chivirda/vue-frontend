@@ -1,33 +1,20 @@
 <template>
   <div class="wrapper">
-    <header class="header">
-      <div class="header__item">
-        <i class="fa fa-user header__icon" aria-hidden="true"></i>
-        <span>Welcome, Anil Tumati</span>
-      </div>
-      <div class="header__item">
-        <i class="fa fa-lock header__icon" aria-hidden="true"></i>
-        <span>Logout</span>
-      </div>
-    </header>
+    <Header />
     <div class="main-wrapper">
-      <nav class="navigation">
-        <div class="navigation__wrapper">
-          <div class="navigation__item">
-            <i class="fa fa-home fa-2x" aria-hidden="true"></i>
-            <span>Dashboard</span>
-          </div>
-          <div class="navigation__item active">
-            <i class="fa fa-files-o fa-2x" aria-hidden="true"></i>
-            <span>Add Contract</span>
-          </div>
-          <div class="navigation__item">
-            <i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
-            <span>Open Tasks</span>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
         
     </div>
   </div>
 </template>
+
+<script>
+import Header from '@/components/Header'
+import Navbar from '@/components/Navbar'
+
+export default {
+  components: {
+    Header, Navbar
+  }
+}
+</script>
