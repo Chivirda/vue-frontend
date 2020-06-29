@@ -9,6 +9,10 @@ export default new Vuex.Store({
   mutations: {
   },
   actions: {
+    async fetchEntities() {
+      const entities = require('@/assets/legalentity.json')
+      return Object.keys(entities).map(key => ({...entities[key], id: key}))
+    }
   },
   modules: {
   }
