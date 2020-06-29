@@ -84,11 +84,12 @@ tr:nth-child(2n) {
 }
 
 td {
-    padding-left: 60px;
+    padding-right: 60px;
 }
-
+ 
 .row td:first-child {
-    padding-left: 44px;
+    padding-left: 24px;
+    padding-right: 0;
 }
 
 .row.active td:first-child {
