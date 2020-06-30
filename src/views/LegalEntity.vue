@@ -35,8 +35,8 @@ export default {
     entities: null,
     isActive: false,
     currentEntity: {
-      entityId: null,
-      entityName: ''
+      id: null,
+      name: ''
     }
   }),
   async mounted() {
@@ -45,8 +45,8 @@ export default {
   methods: {
     onTableClickHandler(entity, currentEntity) {
       this.isActive = entity.id
-      this.currentEntity.entityName = entity.legalEntityName
-      this.currentEntity.entityId = entity.id
+      this.currentEntity.id = entity.id
+      this.currentEntity.name = entity.legalEntityName
       console.log('Cilcked', currentEntity)
 
     },
