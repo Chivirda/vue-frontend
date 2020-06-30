@@ -5,7 +5,7 @@
     <table>
       <thead>
         <tr>
-          <td class=""></td>
+          <td></td>
           <td>Legal Entity</td>
           <td>Street</td>
           <td>City</td>
