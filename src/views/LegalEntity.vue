@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody> 
-        <tr v-for="entity in entities" :key="entity.id" :value="entity.id" class="row" @click="onTableClickHandler">
+        <tr v-for="entity in entities" :key="entity.id" :value="entity.id" class="row" :class="{active: isActive === entity.id}" @click="onTableClickHandler(entity)">
           <td>
             <i class="fa fa-check" aria-hidden="true"></i>
           </td>
@@ -33,22 +33,17 @@ export default {
   name: 'legalentity',
   data: () => ({
     entities: null,
-    rows: null
+    isActive: false
   }),
   async mounted() {
     this.entities = await this.$store.dispatch('fetchEntities')
   },
   methods: {
-    onTableClickHandler() {
-      const rows = document.querySelectorAll('.row')
-      for (let row of rows) {
-        row.onclick = function() {
-          for (let children of rows) {
-              children.classList.remove('active')
-          }
-          this.classList.toggle('active')
-        }
-      }
+    onTableClickHandler(entity) {
+
+      this.isActive = entity.id
+      console.log('Cilcked', entity.legalEntityName)
+
     },
     selectPharmacy() {
       console.log('Button clicked!')
