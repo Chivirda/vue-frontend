@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody> 
-        <tr v-for="entity in entities" :key="entity.id" :value="entity.id" class="row" :class="{active: isActive === entity.id}" @click="onTableClickHandler(entity)">
+        <tr v-for="entity in entities" :key="entity.id" :value="entity.id" class="row" :class="{active: isActive === entity.id}" @click="onTableClickHandler(entity, currentEntity)">
           <td>
             <i class="fa fa-check" aria-hidden="true"></i>
           </td>
@@ -24,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-    <button class="content__button" @click.prevent="selectPharmacy">Select Pharmacies</button>
+    <button class="content__button" @click.prevent="selectPharmacy(currentEntity)">Select Pharmacies</button>
 </div>
 </template>
 
@@ -33,20 +33,25 @@ export default {
   name: 'legalentity',
   data: () => ({
     entities: null,
-    isActive: false
+    isActive: false,
+    currentEntity: {
+      entityId: null,
+      entityName: ''
+    }
   }),
   async mounted() {
     this.entities = await this.$store.dispatch('fetchEntities')
   },
   methods: {
-    onTableClickHandler(entity) {
-
+    onTableClickHandler(entity, currentEntity) {
       this.isActive = entity.id
-      console.log('Cilcked', entity.legalEntityName)
+      this.currentEntity.entityName = entity.legalEntityName
+      this.currentEntity.entityId = entity.id
+      console.log('Cilcked', currentEntity)
 
     },
-    selectPharmacy() {
-      console.log('Button clicked!')
+    selectPharmacy(currentEntity) {
+      console.log('Button clicked!', currentEntity)
     }
   }
 }
