@@ -8,6 +8,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'legalentity',
     component: () => import('@/views/LegalEntity.vue')
+  },
+  {
+    path: '/pharmacy',
+    name: 'pharmacy',
+    component: () => import('@/views/SelectPharmacies.vue')
   }
 ]
 

@@ -24,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-    <button class="content__button" @click.prevent="selectPharmacy(currentEntity)">Select Pharmacies</button>
+    <router-link tag="button" :disabled="disableButton" class="content__button" @click.prevent="selectPharmacy(currentEntity)" :to="'/pharmacy'">Select Pharmacies</router-link>
 </div>
 </template>
 
@@ -37,7 +37,8 @@ export default {
     currentEntity: {
       id: null,
       name: ''
-    }
+    },
+    disableButton: true
   }),
   async mounted() {
     this.entities = await this.$store.dispatch('fetchEntities')
@@ -47,10 +48,12 @@ export default {
       this.isActive = entity.id
       this.currentEntity.id = entity.id
       this.currentEntity.name = entity.legalEntityName
-      console.log('Cilcked', currentEntity)
-
+      this.disableButton = false
     },
     selectPharmacy(currentEntity) {
+      if (currentEntity.id === null) {
+        return
+      }
       console.log('Button clicked!', currentEntity)
     }
   }
