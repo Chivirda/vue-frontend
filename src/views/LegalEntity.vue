@@ -24,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-    <router-link tag="button" :disabled="disableButton" class="content__button" @click.prevent="selectPharmacy(currentEntity)" :to="'/pharmacy'">Select Pharmacies</router-link>
+    <button :disabled="disableButton" class="content__button" @click.prevent="selectPharmacy" >Select Pharmacies</button>
 </div>
 </template>
 
@@ -34,11 +34,11 @@ export default {
   data: () => ({
     entities: null,
     isActive: false,
+    disableButton: true,
     currentEntity: {
       id: null,
       name: ''
-    },
-    disableButton: true
+    }
   }),
   async mounted() {
     this.entities = await this.$store.dispatch('fetchEntities')
@@ -46,15 +46,14 @@ export default {
   methods: {
     onTableClickHandler(entity, currentEntity) {
       this.isActive = entity.id
-      this.currentEntity.id = entity.id
+      this.currentEntity.id = entity.legalEntityID
       this.currentEntity.name = entity.legalEntityName
+      this.$store.dispatch('setCurrentEntity', currentEntity)
       this.disableButton = false
     },
-    selectPharmacy(currentEntity) {
-      if (currentEntity.id === null) {
-        return
-      }
-      console.log('Button clicked!', currentEntity)
+    selectPharmacy() {
+      this.$store.dispatch('fetchPharmacies')
+      this.$router.push('/pharmacy')
     }
   }
 }
