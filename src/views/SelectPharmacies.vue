@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <h1 class="content__head">2: Select Pharmacies</h1>
-    <span>for {{}}</span>
+    <span>for {{name}}</span>
     <table>
       <thead>
         <tr>
@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody> 
-        <tr v-for="pharma in pharmacies" :key="pharma.id" :value="pharma.id" class="row" >
+        <tr v-for="pharma in pharmacies" v-if="pharma.legalEntityID === entityId" :key="pharma.id" :value="pharma.id" class="row">
           <td>
             <i class="fa fa-check" aria-hidden="true"></i>
           </td>
@@ -32,15 +32,22 @@
 export default {
   name: 'pharmacies',
   data: () => ({
-    pharmacies: {},
+    pharmacies: {}
   }),
   async mounted() {
     this.pharmacies = await this.$store.dispatch('fetchPharmacies')
-    console.log(this.$store.state)
   },
   methods: {
     onTableClickHandler() {
 
+    }
+  },
+  computed: {
+    name() {
+      return this.$store.getters.currentEntity.name
+    },
+    entityId() {
+      return this.$store.getters.currentEntity.id
     }
   }
 }

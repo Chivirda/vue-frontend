@@ -28,5 +28,8 @@ export default new Vuex.Store({
   },
   modules: {
     pharmacy
+  },
+  getters: {
+    currentEntity: s => s.currentEntity
   }
 })
