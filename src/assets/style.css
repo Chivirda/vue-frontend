@@ -137,6 +137,18 @@ thead {
 
 .form__fields__row {
     display: flex;
-    justify-content: space-between;
-    max-width: 400px;
+    justify-content: flex-start;
+    max-width: 70%;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #5f5f7d;
+}
+
+.form__fields__row input,
+.form__fields__row select {
+    height: 30px;
+}
+
+.form__fields__row__name {
+    width: 25%;
 }

@@ -5,8 +5,8 @@
 
       <div class="form__fields">
         <div class="form__fields__row">
-          <span>Contract Type</span>
-          <select name="" id="">
+          <span class="form__fields__row__name">Contract Type</span>
+          <select name="" id="" class="form__fields__row__input">
             <option value="Charter">Charter</option>
             <option value="Order">Order</option>
             <option value="Proxy">Proxy</option>
@@ -14,24 +14,24 @@
           </select>
         </div>
         <div class="form__fields__row">
-          <span>Service Agreement #</span>
-          <input type="text">
+          <span class="form__fields__row__name">Service Agreement #</span>
+          <input type="text" class="form__fields__row__input">
         </div>
         <div class="form__fields__row">
-          <span>Contract Start Date</span>
-          <input type="date" name="" id="">
+          <span class="form__fields__row__name">Contract Start Date</span>
+          <input type="date" name="" id="" class="form__fields__row__input">
         </div>
         <div class="form__fields__row">
-          <span>Contract End Date</span>
-          <input type="date" name="" id="">
+          <span class="form__fields__row__name">Contract End Date</span>
+          <input type="date" name="" id="" class="form__fields__row__input">
         </div>
         <div class="form__fields__row">
-          <span>Location</span>
-          <input type="text">
+          <span class="form__fields__row__name">Location</span>
+          <input type="text" class="form__fields__row__input">
         </div>
         <div class="form__fields__row">
-          <span>Contractor Name</span>
-          <input type="text">
+          <span class="form__fields__row__name">Contractor Name</span>
+          <input type="text" class="form__fields__row__input">
         </div>
       </div>
 
