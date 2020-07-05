@@ -24,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-    <button :disabled="disableButton" class="content__button" @click.prevent="enterTerms">Enter Contract Terms</button>
+    <button :disabled="disableButton" class="content__button" @click.prevent="enterTerms(pharmacies, isActive, currentPharmacies)">Enter Contract Terms</button>
     <button class="content__button-back" @click.prevent="$router.go(-1)">Back</button>
   </div>
 </template>
@@ -34,7 +34,8 @@ export default {
   data: () => ({
     pharmacies: {},
     isActive: [],
-    disableButton: true
+    disableButton: true,
+    currentPharmacies: []
   }),
   async mounted() {
     this.pharmacies = await this.$store.dispatch('fetchPharmacies')
@@ -51,8 +52,20 @@ export default {
         this.disableButton = false
       }
     },
-    enterTerms() {
-      console.log('Button clicked!')
+    enterTerms(pharmacies, isActive, currentPharmacies) {
+      for (let id of isActive) {
+        for (let pharma of pharmacies) {
+          if (pharma.pharmaID === id) {
+            currentPharmacies.push({
+              id,
+              name: pharma.pharmaName,
+              address: `${pharma.address_1} ${pharma.address_2}`
+            })
+          }
+        }
+      }
+
+      this.$store.dispatch('setcurrentPharmacies', currentPharmacies)
     }
   },
   computed: {
