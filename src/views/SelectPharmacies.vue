@@ -24,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-    <button class="content__button" @click.prevent="">Enter Contract Terms</button>
+    <button :disabled="disableButton" class="content__button" @click.prevent="enterTerms">Enter Contract Terms</button>
     <button class="content__button-back" @click.prevent="$router.go(-1)">Back</button>
   </div>
 </template>
@@ -33,7 +33,8 @@ export default {
   name: 'pharmacies',
   data: () => ({
     pharmacies: {},
-    isActive: []
+    isActive: [],
+    disableButton: true
   }),
   async mounted() {
     this.pharmacies = await this.$store.dispatch('fetchPharmacies')
@@ -45,6 +46,13 @@ export default {
       } else {
         isActive.push(pharma.id)
       }
+
+      if (isActive.length !== 0) {
+        this.disableButton = false
+      }
+    },
+    enterTerms() {
+      console.log('Button clicked!')
     }
   },
   computed: {
