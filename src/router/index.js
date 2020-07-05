@@ -13,6 +13,11 @@ Vue.use(VueRouter)
     path: '/pharmacy',
     name: 'pharmacy',
     component: () => import('@/views/SelectPharmacies.vue')
+  },
+  {
+    path: '/terms',
+    name: 'terms',
+    component: () => import('@/views/EnterContractTerms.vue')
   }
 ]
 

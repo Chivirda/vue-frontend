@@ -66,6 +66,7 @@ export default {
       }
 
       this.$store.dispatch('setcurrentPharmacies', currentPharmacies)
+      this.$router.push('terms')
     }
   },
   computed: {

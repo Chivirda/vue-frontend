@@ -1,7 +1,6 @@
 <template>
   <div class="content">
     <h1 class="content__head">1: Select Legal Entity</h1>
-    <span id="entityName"></span>
     <table>
       <thead>
         <tr>
@@ -25,7 +24,7 @@
       </tbody>
     </table>
     <button :disabled="disableButton" class="content__button" @click.prevent="selectPharmacy" >Select Pharmacies</button>
-</div>
+  </div>
 </template>
 
 <script>
