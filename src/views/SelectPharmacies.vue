@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody> 
-        <tr v-for="pharma in pharmacies" v-if="pharma.legalEntityID === entityId" :key="pharma.id" :value="pharma.id" class="row">
+        <tr v-for="pharma in pharmacies" v-if="pharma.legalEntityID === entityId" :class="{active: isActive.includes(pharma.id)}" @click="onTableClickHandler(pharma, isActive)" :key="pharma.id" :value="pharma.id" class="row">
           <td>
             <i class="fa fa-check" aria-hidden="true"></i>
           </td>
@@ -32,14 +32,19 @@
 export default {
   name: 'pharmacies',
   data: () => ({
-    pharmacies: {}
+    pharmacies: {},
+    isActive: []
   }),
   async mounted() {
     this.pharmacies = await this.$store.dispatch('fetchPharmacies')
   },
   methods: {
-    onTableClickHandler() {
-
+    onTableClickHandler(pharma, isActive) {
+      if (isActive.includes(pharma.id)) {
+        isActive.splice(isActive.indexOf(pharma.id), 1)
+      } else {
+        isActive.push(pharma.id)
+      }
     }
   },
   computed: {
