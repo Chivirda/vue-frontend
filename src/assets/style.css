@@ -135,6 +135,11 @@ thead {
     border-radius: 3px;
 }
 
+.content__button:hover,
+.content__button-back:hover {
+    cursor: pointer;
+}
+
 .form__fields__row {
     display: flex;
     justify-content: flex-start;
