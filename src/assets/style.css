@@ -115,6 +115,10 @@ thead {
     display: none;
 }
 
+.row:hover {
+    cursor: pointer;
+}
+
 .content__button {
     float: right;
     margin-top: 80px;
