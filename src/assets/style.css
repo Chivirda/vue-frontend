@@ -119,6 +119,7 @@ thead {
     cursor: pointer;
     background-color: #BCC6CC;
     color: #ffffff;
+    transition: ease 0.25s;
 }
 
 .row.active:hover {
