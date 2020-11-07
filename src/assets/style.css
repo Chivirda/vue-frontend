@@ -117,6 +117,14 @@ thead {
 
 .row:hover {
     cursor: pointer;
+    background-color: #BCC6CC;
+    color: #ffffff;
+}
+
+.row.active:hover {
+    cursor: pointer;
+    background-color: #99d448;
+    color: #ffffff;
 }
 
 .content__button {
