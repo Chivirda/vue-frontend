@@ -19,7 +19,10 @@
         </div>
         <div class="form__fields__row">
           <span class="form__fields__row__name">Contract Start Date</span>
-          <input type="date" name="" id="" class="form__fields__row__input">
+          <Datepicker
+           :disabled-dates="startDatePicker.disabledDates"
+           class="form__fields__row__input"
+          />
         </div>
         <div class="form__fields__row">
           <span class="form__fields__row__name">Contract End Date</span>
@@ -41,15 +44,27 @@
   </div>
 </template>
 <script>
+import Datepicker from 'vuejs-datepicker'
+
+let startDate = new Date()
+
 export default {
   name: 'terms',
   data: () => ({
-    disableButton: false
+    disableButton: false,
+    startDatePicker: {
+      disabledDates: {
+        to: new Date(startDate.setDate(startDate.getDate() -1))
+      }
+    }
   }),
   methods: {
     submitHandler() {
       console.log('Form submitted')
     }
+  },
+  components: {
+    Datepicker
   }
 }
 </script>
