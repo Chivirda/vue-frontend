@@ -20,13 +20,21 @@
         <div class="form__fields__row">
           <span class="form__fields__row__name">Contract Start Date</span>
           <Datepicker
-           :disabled-dates="startDatePicker.disabledDates"
-           class="form__fields__row__input"
+            class="form__fields__row__input"
+            monday-first
+            @selected="onSelectDateHandler"
+            v-model="startDate"
+            :format="'MM/dd/yyyy'"
           />
         </div>
         <div class="form__fields__row">
           <span class="form__fields__row__name">Contract End Date</span>
-          <input type="date" name="" id="" class="form__fields__row__input">
+          <Datepicker
+            class="form__fields__row__input"
+            monday-first
+            @opened="contractEndDate.disabledDates"
+            :format="'MM/dd/yyyy'"
+          />
         </div>
         <div class="form__fields__row">
           <span class="form__fields__row__name">Location</span>
@@ -46,21 +54,29 @@
 <script>
 import Datepicker from 'vuejs-datepicker'
 
-let startDate = new Date()
-
 export default {
   name: 'terms',
   data: () => ({
     disableButton: false,
-    startDatePicker: {
+    startDate: new Date(),
+    contractEndDate: {
       disabledDates: {
-        to: new Date(startDate.setDate(startDate.getDate() -1))
+        customPredictor: function(date, startDate) {
+          if(date.getDate() < startDate.getDate()) {
+            return true;
+          }
+        }
       }
     }
   }),
   methods: {
     submitHandler() {
       console.log('Form submitted')
+    },
+    onSelectDateHandler(startDate) {
+      console.log('onSelectDateHandler')
+      this.startDate = new Date(this.startDate)
+      console.log(startDate)
     }
   },
   components: {
